@@ -4,7 +4,7 @@ Block-Lands source code
 # usage
 To use Block-Lands, 
 
-- download [percentCool](https://github.com/Novixx-Systems/percentcool)
+- download and compile [percentCool](https://github.com/Novixx-Systems/percentcool)
 
 - run percentCool
 
