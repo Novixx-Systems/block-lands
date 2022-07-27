@@ -1,0 +1,42 @@
+<%cool
+// Block-Lands register page
+// Since we do not use hashing (since theres no hash feature yet)
+// we just insert the password in the DB
+// NOTE: We will add hashing when its added into percentCool
+
+include head.html
+if $register = NULL
+else
+	if $username = NOTHING
+		echo You need to enter a username first.
+	else
+		if $password = NOTHING
+			echo You need to enter a password first.
+		else
+			$unescapedusername = $username
+			escape $username
+			escape $password
+			sqlquery SELECT username FROM users WHERE username = "$username"
+			foreach $sqlresult
+				if $i = $unescapedusername
+					echo Username is in use
+				else
+					sqlquery INSERT INTO users VALUES ("$username","$password",0)
+					echo <script>window.location.href="login.html"</script>
+				stopif
+			stoploop
+		stopif
+	stopif
+stopif
+%>
+<center>
+<font size="+4" face="Arial">Create Account:</font><br><br>
+<form method="post">
+<input type="text" name="username" placeholder="User Name"><br>
+<input type="password" name="password" placeholder="Password"><br>
+<input type="submit" value="Register" name="register"><br>
+</form>
+</center>
+<%cool
+include foot.html
+%>

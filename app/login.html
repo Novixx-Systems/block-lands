@@ -1,0 +1,51 @@
+<%cool
+// Block-Lands login page
+// Since we do not use hashing (since theres no hash feature yet)
+// we just check if the password is the same as in the DB
+// NOTE: We will add hashing when its added into percentCool
+
+include head.html
+if $login = NULL
+else
+	if $username = NOTHING
+		echo You need to enter a username first.
+	else
+		if $password = NOTHING
+			echo You need to enter a password first.
+		else
+			$unescapedusername = $username
+			escape $username
+			escape $password
+			sqlquery SELECT username FROM users WHERE username = "$username"
+			foreach $sqlresult
+				if $i = $unescapedusername
+					sqlquery SELECT password FROM users WHERE username = "$username"
+					foreach $sqlresult
+						if $i = $password
+							echo You are now logged in.
+							sessionset username $unescapedusername
+							echo <script>window.location.href="index.html"</script>
+						stopif
+					stoploop
+				else
+					if $login = NULL
+					else
+						echo Incorrect username or password
+					stopif
+				stopif
+			stoploop
+		stopif
+	stopif
+stopif
+%>
+<center>
+<font size="+4" face="Arial">Login:</font><br><br>
+<form method="post">
+<input type="text" name="username" placeholder="User Name"><br>
+<input type="password" name="password" placeholder="Password"><br>
+<input type="submit" value="Login" name="login"><br>
+</form>
+</center>
+<%cool
+include foot.html
+%>
