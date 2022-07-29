@@ -16,10 +16,10 @@ else
 			$unescapedusername = $username
 			escape $username
 			escape $password
-			sqlquery "SELECT username FROM users WHERE username = '$username'"
+			sqlquery SELECT username FROM users WHERE username = '$username'
 			foreach $sqlresult
 				if $i = $unescapedusername
-					sqlquery "SELECT password FROM users WHERE username = '$username'"
+					sqlquery SELECT password FROM users WHERE username = '$username'
 					foreach $sqlresult
 						if $i = $password
 							echo "You are now logged in."

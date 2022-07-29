@@ -16,7 +16,7 @@ echo "$unescapedusername"
 !</h1>
 <img src="
 <%cool
-sqlquery "SELECT avatar FROM users WHERE username = '$username'"
+sqlquery SELECT avatar FROM users WHERE username = '$username'
 arraytovars $sqlresult
 if $a1 = 0
 	echo "cdn/avatars/default.png"

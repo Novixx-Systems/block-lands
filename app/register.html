@@ -16,12 +16,12 @@ else
 			$unescapedusername = $username
 			escape $username
 			escape $password
-			sqlquery "SELECT username FROM users WHERE username = '$username'"
+			sqlquery SELECT username FROM users WHERE username = '$username'
 			foreach $sqlresult
 				if $i = $unescapedusername
 					echo "Username is in use"
 				else
-					sqlquery "INSERT INTO users VALUES ('$username','$password',0)"
+					sqlquery INSERT INTO users VALUES ('$username','$password',0)
 					echo "<script>window.location.href='login.html'</script>"
 				stopif
 			stoploop
