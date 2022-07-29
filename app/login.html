@@ -8,29 +8,29 @@ include head.html
 if $login = NULL
 else
 	if $username = NOTHING
-		echo You need to enter a username first.
+		echo "You need to enter a username first."
 	else
 		if $password = NOTHING
-			echo You need to enter a password first.
+			echo "You need to enter a password first."
 		else
 			$unescapedusername = $username
 			escape $username
 			escape $password
-			sqlquery SELECT username FROM users WHERE username = "$username"
+			sqlquery "SELECT username FROM users WHERE username = '$username'"
 			foreach $sqlresult
 				if $i = $unescapedusername
-					sqlquery SELECT password FROM users WHERE username = "$username"
+					sqlquery "SELECT password FROM users WHERE username = '$username'"
 					foreach $sqlresult
 						if $i = $password
-							echo You are now logged in.
+							echo "You are now logged in."
 							sessionset username $unescapedusername
-							echo <script>window.location.href="index.html"</script>
+							echo "<script>window.location.href='index.html'</script>"
 						stopif
 					stoploop
 				else
 					if $login = NULL
 					else
-						echo Incorrect username or password
+						echo "Incorrect username or password"
 					stopif
 				stopif
 			stoploop

@@ -8,21 +8,21 @@ include head.html
 if $register = NULL
 else
 	if $username = NOTHING
-		echo You need to enter a username first.
+		echo "You need to enter a username first."
 	else
 		if $password = NOTHING
-			echo You need to enter a password first.
+			echo "You need to enter a password first."
 		else
 			$unescapedusername = $username
 			escape $username
 			escape $password
-			sqlquery SELECT username FROM users WHERE username = "$username"
+			sqlquery "SELECT username FROM users WHERE username = '$username'"
 			foreach $sqlresult
 				if $i = $unescapedusername
-					echo Username is in use
+					echo "Username is in use"
 				else
-					sqlquery INSERT INTO users VALUES ("$username","$password",0)
-					echo <script>window.location.href="login.html"</script>
+					sqlquery "INSERT INTO users VALUES ('$username','$password',0)"
+					echo "<script>window.location.href='login.html'</script>"
 				stopif
 			stoploop
 		stopif

@@ -2,7 +2,7 @@
 include head.html
 sessionget username
 if $_SESSIONGET = NOTHING
-	echo <script>window.location.href="../"</script>
+	echo "<script>window.location.href='../'</script>"
 else
 $unescapedusername = $_SESSIONGET
 $username = $_SESSIONGET
@@ -11,21 +11,21 @@ escape $username
 <center>
 <h1>Welcome, 
 <%cool
-echo $unescapedusername
+echo "$unescapedusername"
 %>
 !</h1>
 <img src="
 <%cool
-sqlquery SELECT avatar FROM users WHERE username = "$username"
+sqlquery "SELECT avatar FROM users WHERE username = '$username'"
 arraytovars $sqlresult
 if $a1 = 0
-	echo cdn/avatars/default.png
+	echo "cdn/avatars/default.png"
 stopif
 if $a1 = 1
-	echo cdn/avatars/defaultG.png
+	echo "cdn/avatars/defaultG.png"
 stopif
 if $a1 = 2
-	echo cdn/avatars/defaultG.png
+	echo "cdn/avatars/defaultG.png"
 stopif
 %>
 ">
