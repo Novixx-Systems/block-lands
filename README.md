@@ -4,6 +4,12 @@ Block-Lands source code
 # usage
 To use Block-Lands, 
 
+- download and compile [percentCool](https://github.com/Novixx-Systems/percentcool)
+
+- run percentCool
+
+- put source code into the www folder
+
 - import the SQL file to a database
 
 - delete the SQL file for security
